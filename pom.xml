@@ -10,17 +10,17 @@
 	<artifactId>webapp</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>52°North SOS TIMESERIES API BUNDLE</name>
-	<description>52°North Bundle with SOS  and Timeseries API</description>
+	<name>52°North SOS - Webapp with Sensor Web Client REST API</name>
+	<description>52°North SOS webapp with Sensor Web Client REST API</description>
 	<properties>
-		<sos.version>4.1.0-SNAPSHOT</sos.version>
-		<timeseries.api.version>1.2.0-SNAPSHOT</timeseries.api.version>
+		<sos.version>4.1.0</sos.version>
+		<timeseries.api.version>1.3.0-SNAPSHOT</timeseries.api.version>
 	</properties>
-	    <build>
-	    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
-        <finalName>52n-sos-ts-api-webapp</finalName>
-        <plugins>
-        	<plugin>
+	<build>
+		<!-- <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory> -->
+		<finalName>52n-sos-webapp</finalName>
+		<plugins>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
@@ -52,39 +52,26 @@
 					</execution>
 				</executions>
 			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-                    <!-- <webResources>
-                        <resource>
-                            <directory>src/main/webapp</directory>
-                            <filtering>true</filtering>
-                        </resource>
-                        <resource>
-                            <directory>src/main/resources</directory>
-                            <filtering>true</filtering>
-                            <targetPath>WEB-INF/classes</targetPath>
-                        </resource>
-                        <resource>
-                            <directory>../misc/db</directory>
-                            <filtering>false</filtering>
-                            <targetPath>sql</targetPath>
-                            <includes>
-                                <include>**/*.sql</include>
-                            </includes>
-                        </resource>
-                    </webResources> -->
-                    <overlays>
-                        <overlay>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>webapp</artifactId>
-                        </overlay>
-                    </overlays>
-                </configuration>
-            </plugin>
-        </plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+					<!-- <webResources> <resource> <directory>src/main/webapp</directory> 
+						<filtering>true</filtering> </resource> <resource> <directory>src/main/resources</directory> 
+						<filtering>true</filtering> <targetPath>WEB-INF/classes</targetPath> </resource> 
+						<resource> <directory>../misc/db</directory> <filtering>false</filtering> 
+						<targetPath>sql</targetPath> <includes> <include>**/*.sql</include> </includes> 
+						</resource> </webResources> -->
+					<overlays>
+						<overlay>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>webapp</artifactId>
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 
 	<dependencies>
@@ -93,51 +80,102 @@
 			<groupId>org.n52.sensorweb</groupId>
 			<artifactId>timeseries-web</artifactId>
 			<version>${timeseries.api.version}</version>
+			<!-- <exclusions>
+				<exclusion>
+					<groupId>org.geotools</groupId>
+					<artifactId>gt-main</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.geotools</groupId>
+					<artifactId>gt-epsg-hsql</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.geotools</groupId>
+					<artifactId>gt-opengis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.geotools</groupId>
+					<artifactId>gt-metadata</artifactId>
+				</exclusion>
+			</exclusions> -->
 		</dependency>
+		<!-- <dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-main</artifactId>
+			<version>9.5</version>
+		</dependency> -->
 		<dependency>
 			<groupId>org.n52.sensorweb</groupId>
 			<artifactId>timeseries-series-dao</artifactId>
 			<version>${timeseries.api.version}</version>
 		</dependency>
 		<dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>webapp</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>webapp</artifactId>
 			<version>${sos.version}</version>
-            <type>war</type>
-        </dependency>
+			<type>war</type>
+		</dependency>
 	</dependencies>
-	
-	 <repositories>
-        <repository>
-            <id>Apache</id>
-            <name>Apache repository</name>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>n52-releases</id>
-            <name>52n Releases</name>
-            <url>http://52north.org/maven/repo/releases</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>n52s</id>
-            <name>52n Snapshots</name>
-            <url>http://52north.org/maven/repo/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-		</repositories>
+
+	<repositories>
+		<repository>
+			<id>Apache</id>
+			<name>Apache repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>n52-releases</id>
+			<name>52n Releases</name>
+			<url>http://52north.org/maven/repo/releases</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>n52s</id>
+			<name>52n Snapshots</name>
+			<url>http://52north.org/maven/repo/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Refractions</id>
+			<name>Refractions repository</name>
+			<url>http://lists.refractions.net/m2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Hibernate Spatial repo</id>
+			<url>http://www.hibernatespatial.org/repository</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>osgeo</id>
+			<name>Open Source Geospatial Foundation Repository</name>
+			<url>http://download.osgeo.org/webdav/geotools/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>boundless</id>
+			<name>Boundless, formerly OpenGeo</name>
+			<url>http://repo.boundlessgeo.com/main/</url>
+		</repository>
+	</repositories>
 </project>
 
