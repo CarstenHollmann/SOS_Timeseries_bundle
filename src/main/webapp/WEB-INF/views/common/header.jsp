@@ -179,8 +179,8 @@
 									</sec:authorize>
 									<c:if test="${sos:staticExtensionExists(pageContext.servletContext, 'api-doc/index.html')}">
                                         <li>
-                                            <a id="client-menuitem" class="menu-item1" href="<c:url value="/static/api-doc" />">
-                                                <span class="menu-title">Timeseries-API</span>
+                                            <a id="rest-menuitem" class="menu-item4" target="_blank" href="<c:url value="/static/api-doc" />">
+                                                <span class="menu-title">SWC REST-API</span>
                                             </a>
                                         </li>
                                     </c:if>
