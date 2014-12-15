@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>52n-sos</artifactId>
 		<groupId>org.n52.sensorweb.sos</groupId>
-		<version>4.1.0-SNAPSHOT</version>
+		<version>4.1.1</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>webapp</artifactId>
@@ -13,8 +13,8 @@
 	<name>52°North SOS - Webapp with Sensor Web Client REST API</name>
 	<description>52°North SOS webapp with Sensor Web Client REST API</description>
 	<properties>
-		<sos.version>4.1.0</sos.version>
-		<timeseries.api.version>1.3.0-SNAPSHOT</timeseries.api.version>
+		<sos.version>4.1.1</sos.version>
+		<timeseries.api.version>1.2.2</timeseries.api.version>
 	</properties>
 	<build>
 		<!-- <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory> -->
